@@ -37,7 +37,7 @@ rm $TMPFILE
 
 cd "${DIR}"
 
-peer lifecycle chaincode package cp.tar.gz --lang golang --path ${DIR}/chaincode-go --label cp_0
+peer lifecycle chaincode package cp.tar.gz --lang golang --path ${DIR}/chaincode-tea-go --label cp_0
 peer lifecycle chaincode install cp.tar.gz
 PACKAGE_ID="$(peer lifecycle chaincode queryinstalled | grep -oP 'cp_0:.*(?=,)')"
 echo "Exported $PACKAGE_ID"

@@ -1,0 +1,84 @@
+# Основные параметры сети
+network:
+  # Имя сети
+  name: fabric-network
+  # Тип DLT-платформы
+  type: fabric
+  # Версия Fabric
+  version: 2.2.0
+  # Порт для мониторинга сети
+  monitoring_port: 8080
+
+# Параметры организаций
+organizations:
+  # Список организаций
+  - name: Org1
+    # Тип организации (peer или orderer)
+    type: peer
+    # Порт для взаимодействия с CA
+    ca_port: 7054
+    # Адрес электронной почты администратора
+    email: admin@org1.com
+    # Доменное имя организации
+    domain: org1.com
+    # Список узлов организации
+    peers:
+      - name: peer1.org1.com
+        # Порт для взаимодействия с узлом
+        port: 7051
+        # Порт для взаимодействия с chaincode
+        chaincode_port: 7052
+        # Количество реплик узла (для Kubernetes)
+        replicas: 1
+      - name: peer2.org1.com
+        port: 8051
+        chaincode_port: 8052
+        replicas: 1
+
+  - name: Org2
+    type: peer
+    ca_port: 8054
+    email: admin@org2.com
+    domain: org2.com
+    peers:
+      - name: peer1.org2.com
+        port: 9051
+        chaincode_port: 9052
+        replicas: 1
+
+  - name: Org3
+    type: peer
+    ca_port: 9054
+    email: admin@org3.com
+    domain: org3.com
+    peers:
+      - name: peer1.org3.com
+        port: 10051
+        chaincode_port: 10052
+        replicas: 1
+
+# Параметры центра сертификации (CA)
+certificate_authorities:
+  # Имя CA (должно быть уникальным)
+  - name: ca-org1-org2-org3 
+    # Адрес электронной почты администратора CA 
+    email: ca-admin@ca-org1-org2-org3.com 
+    # Доменное имя CA 
+    domain: ca-org1-org2-org3.com 
+    # Порт для взаимодействия с CA 
+    port: 7055 
+    # Список организаций, которые используют этот CA 
+    organizations:
+      - Org1 
+      - Org2 
+      - Org3
+
+# Параметры каналов сети 
+channels:
+  # Список каналов 
+  - name: mychannel 
+    # Список организаций, которые являются членами канала 
+    participants:
+      - Org1 
+      - Org2 
+      - Org3 

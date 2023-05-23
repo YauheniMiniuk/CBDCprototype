@@ -1,0 +1,44 @@
+[
+    {
+        "transactionName": "CbdcExists",
+        "transactionLabel": "A test CbdcExists transaction",
+        "arguments": [
+            "001"
+        ],
+        "transientData": {}
+    },
+    {
+        "transactionName": "CreateCbdc",
+        "transactionLabel": "A test CreateCbdc transaction",
+        "arguments": [
+            "001",
+            "some value"
+        ],
+        "transientData": {}
+    },
+    {
+        "transactionName": "ReadCbdc",
+        "transactionLabel": "A test ReadCbdc transaction",
+        "arguments": [
+            "001"
+        ],
+        "transientData": {}
+    },
+    {
+        "transactionName": "UpdateCbdc",
+        "transactionLabel": "A test UpdateCbdc transaction",
+        "arguments": [
+            "001",
+            "some other value"
+        ],
+        "transientData": {}
+    },
+    {
+        "transactionName": "DeleteCbdc",
+        "transactionLabel": "A test DeleteCbdc transaction",
+        "arguments": [
+            "001"
+        ],
+        "transientData": {}
+    }
+]
