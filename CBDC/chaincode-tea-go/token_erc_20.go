@@ -12,8 +12,8 @@ import (
 )
 
 func main() {
-	// chaincode, err := contractapi.NewChaincode(&chaincode.TeaContract{}, &chaincode.Erc20Contract{})
-	chaincode, err := contractapi.NewChaincode(&chaincode.TeaContract{})
+	chaincode, err := contractapi.NewChaincode(&chaincode.TeaContract{}, &chaincode.Erc20Contract{})
+	// chaincode, err := contractapi.NewChaincode(&chaincode.TeaContract{})
 
 	if err != nil {
 		log.Panicf("Error creating token-tea chaincode: %v", err)
@@ -22,7 +22,7 @@ func main() {
 		log.Panicf("Error starting token-tea chaincode: %v", err)
 	}
 
-	// erc20Chaincode, err := contractapi.NewChaincode(&erc20_smartcontract.Erc20Contract{})
+	// erc20Chaincode, err := contractapi.NewChaincode(&chaincode.Erc20Contract{})
 	// if err != nil {
 	// 	log.Panicf("Error creating token-erc-20 chaincode: %v", err)
 	// }

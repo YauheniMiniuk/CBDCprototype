@@ -32,6 +32,12 @@ type QueryResult struct {
 	Key    string `json:"key"`
 	Record *event
 }
+type QueryHistory struct {
+	TxID string `json:"txID"`
+	TimeStamp time.Time `json:"timestamp"`
+	IsDelete bool `json:"isDelete"`
+	Record *event
+}
 
 // event provides an organized struct for emitting events
 type event struct {
@@ -42,7 +48,7 @@ type event struct {
 
 // Mint creates new tokens and adds them to minter's account balance
 // This function triggers a Transfer event
-func (s *Erc20Contract) MintErc(ctx contractapi.TransactionContextInterface, amount int) error {
+func (s *Erc20Contract) Mint(ctx contractapi.TransactionContextInterface, amount int) error {
 
 	// Check if contract has been intilized first
 	initialized, err := checkInitialized(ctx)
@@ -123,7 +129,7 @@ func (s *Erc20Contract) MintErc(ctx contractapi.TransactionContextInterface, amo
 	}
 
 	// Emit the Transfer event
-	transferEvent := event{"0x0", minter, amount, check}
+	transferEvent := event{"0x0", minter, amount}
 	transferEventJSON, err := json.Marshal(transferEvent)
 	if err != nil {
 		return fmt.Errorf("failed to obtain JSON encoding: %v", err)
@@ -140,7 +146,7 @@ func (s *Erc20Contract) MintErc(ctx contractapi.TransactionContextInterface, amo
 
 // Burn redeems tokens the minter's account balance
 // This function triggers a Transfer event
-func (s *Erc20Contract) BurnErc(ctx contractapi.TransactionContextInterface, amount int) error {
+func (s *Erc20Contract) Burn(ctx contractapi.TransactionContextInterface, amount int) error {
 
 	// Check if contract has been intilized first
 	initialized, err := checkInitialized(ctx)
