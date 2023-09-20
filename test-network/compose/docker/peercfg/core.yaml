@@ -659,7 +659,7 @@ ledger:
        # not map the CouchDB container port to a server port in docker-compose.
        # Otherwise proper security must be provided on the connection between
        # CouchDB client (on the peer) and server.
-       couchDBAddress: 34.118.24.75:5984
+       couchDBAddress: localhost:5984
        # This username must have read and write authority on CouchDB
        username:
        # The password is recommended to pass as an environment variable
