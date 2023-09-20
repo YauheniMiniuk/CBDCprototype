@@ -41,9 +41,9 @@ peer lifecycle chaincode package cp.tar.gz --lang golang --path ${DIR}/chaincode
 peer lifecycle chaincode install cp.tar.gz
 PACKAGE_ID="$(peer lifecycle chaincode queryinstalled | grep -oP 'cp_0:.*(?=,)')"
 echo "Exported $PACKAGE_ID"
-peer lifecycle chaincode approveformyorg --orderer localhost:7050 --ordererTLSHostnameOverride orderer.example.com --channelID mychannel --name cbdc -v 0 --package-id $PACKAGE_ID --sequence 1 --tls --cafile $ORDERER_CA
+peer lifecycle chaincode approveformyorg --orderer 34.118.24.75:7050 --ordererTLSHostnameOverride orderer.example.com --channelID mychannel --name cbdc -v 0 --package-id $PACKAGE_ID --sequence 1 --tls --cafile $ORDERER_CA
 
-peer lifecycle chaincode commit -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --peerAddresses localhost:7051 --tlsRootCertFiles ${PEER0_ORG1_CA} --peerAddresses localhost:9051 --tlsRootCertFiles ${PEER0_ORG2_CA} --channelID mychannel --name cbdc -v 0 --sequence 1 --tls --cafile $ORDERER_CA --waitForEvent
+peer lifecycle chaincode commit -o 34.118.24.75:7050 --ordererTLSHostnameOverride orderer.example.com --peerAddresses 34.118.24.75:7051 --tlsRootCertFiles ${PEER0_ORG1_CA} --peerAddresses 34.118.24.75:9051 --tlsRootCertFiles ${PEER0_ORG2_CA} --channelID mychannel --name cbdc -v 0 --sequence 1 --tls --cafile $ORDERER_CA --waitForEvent
 
 peer lifecycle chaincode querycommitted --channelID mychannel --name cbdc --cafile ${PWD}/../test-network/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
 
