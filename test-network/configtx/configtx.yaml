@@ -43,6 +43,7 @@ Organizations:
 
         OrdererEndpoints:
             - orderer.example.com:7050
+            - 34.118.24.75:7050
 
     - &Org1
         # DefaultOrg defines the organization which is used in the sampleconfig
@@ -209,6 +210,7 @@ Orderer: &OrdererDefaults
     # to include the OrdererEndpoints item in your org definition
     Addresses:
         - orderer.example.com:7050
+        - 34.118.24.75:7050
 
     EtcdRaft:
         Consenters:
