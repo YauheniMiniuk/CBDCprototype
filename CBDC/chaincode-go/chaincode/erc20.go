@@ -38,11 +38,17 @@ type event struct {
 	From  string `json:"from"`
 	To    string `json:"to"`
 	Value int    `json:"value"`
+	Check *Check `json:"check"`
+}
+
+type Check struct {
+	Name   string `json:"name"`
+	Price  float32 `json:"price"`
 }
 
 // Mint creates new tokens and adds them to minter's account balance
 // This function triggers a Transfer event
-func (s *Erc20Contract) MintErc(ctx contractapi.TransactionContextInterface, amount int) error {
+func (s *Erc20Contract) Mint(ctx contractapi.TransactionContextInterface, amount int, check Check) error {
 
 	// Check if contract has been intilized first
 	initialized, err := checkInitialized(ctx)
@@ -140,7 +146,7 @@ func (s *Erc20Contract) MintErc(ctx contractapi.TransactionContextInterface, amo
 
 // Burn redeems tokens the minter's account balance
 // This function triggers a Transfer event
-func (s *Erc20Contract) BurnErc(ctx contractapi.TransactionContextInterface, amount int) error {
+func (s *Erc20Contract) Burn(ctx contractapi.TransactionContextInterface, amount int) error {
 
 	// Check if contract has been intilized first
 	initialized, err := checkInitialized(ctx)
